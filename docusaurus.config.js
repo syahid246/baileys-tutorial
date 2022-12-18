@@ -34,12 +34,14 @@ const config = {
       /** @type {import('@docusaurus/preset-classic').Options} */
       ({
         docs: {
+          routeBasePath: '/', // Serve the docs at the site's root
           sidebarPath: require.resolve('./sidebars.js'),
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl:
             'https://github.com/syahid246/baileys-tutorial/tree/main/',
         },
+        blog: false, // disable the blog plugin
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
         },
@@ -51,20 +53,14 @@ const config = {
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
       navbar: {
-        title: 'My Site',
+        title: 'Baileys Tutorial',
         logo: {
-          alt: 'My Site Logo',
+          alt: 'Docusaurus Logo',
           src: 'img/logo.svg',
         },
         items: [
           {
-            type: 'doc',
-            docId: 'intro',
-            position: 'left',
-            label: 'Tutorial',
-          },
-          {
-            href: 'https://github.com/facebook/docusaurus',
+            href: 'https://github.com/syahid246/baileys-tutorial',
             label: 'GitHub',
             position: 'right',
           },
