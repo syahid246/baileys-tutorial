@@ -60,6 +60,10 @@ const config = {
         },
         items: [
           {
+            type: 'localeDropdown',
+            position: 'right',
+          },
+          {
             href: 'https://github.com/syahid246/baileys-tutorial',
             label: 'GitHub',
             position: 'right',
