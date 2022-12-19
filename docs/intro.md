@@ -3,46 +3,114 @@ sidebar_position: 1
 slug: /
 ---
 
-# Tutorial Intro
+# Intro
 
-Let's discover **Docusaurus in less than 5 minutes**.
+## Custom Docusaurus Plugins
 
-## Getting Started
-
-Get started by **creating a new site**.
-
-Or **try Docusaurus immediately** with **[docusaurus.new](https://docusaurus.new)**.
-
-### What you'll need
-
-- [Node.js](https://nodejs.org/en/download/) version 16.14 or above:
-  - When installing Node.js, you are recommended to check all checkboxes related to dependencies.
-
-## Generate a new site
-
-Generate a new Docusaurus site using the **classic template**.
-
-The classic template will automatically be added to your project after you run the command:
-
-```bash
-npm init docusaurus@latest my-website classic
+```jsx live
+function Clock(props) {
+  const [date, setDate] = useState(new Date())
+  useEffect(() => {
+    var timerID = setInterval(() => tick(), 1000)
+    return function cleanup() {
+      clearInterval(timerID)
+    }
+  })
+  function tick() {
+    setDate(new Date())
+  }
+  return (
+    <div>
+      <h2>It is {date.toLocaleTimeString()}.</h2>
+    </div>
+  )
+}
 ```
 
-You can type this command into Command Prompt, Powershell, Terminal, or any other integrated terminal of your code editor.
-
-The command also installs all necessary dependencies you need to run Docusaurus.
-
-## Start your site
-
-Run the development server:
-
-```bash
-cd my-website
-npm run start
+```twoslash include main
+const PI = Math.PI
 ```
 
-The `cd` command changes the directory you're working with. In order to work with your newly created Docusaurus site, you'll need to navigate the terminal there.
+## Non Twoslash Highlight
 
-The `npm run start` command builds your website locally and serves it through a development server, ready for you to view at http://localhost:3000/.
+```rust {4-6, 10}
+use std::cell::RefCell;
+use std::rc::Rc;
+trait Renderable {}
+struct Widget {
+    children: Rc<RefCell<Vec<Self>>>,
+}
+// ...
+pub fn render(widget: Box<dyn Renderable>) {}
+```
 
-Open `docs/intro.md` (this page) and edit some lines: the site **reloads automatically** and displays your changes.
+## An example twoslash
+
+```ts twoslash
+const a = 123
+const b = "OK"
+// ---cut---
+console.log(b)
+```
+
+## A big chunk of code
+
+Code taken from [here](https://github.com/vuejs/petite-vue/blob/71aefbf2d79852cdc3ccd63b7d3c79221f7c5fb4/src/utils.ts).
+
+```ts twoslash title="src/utils.ts"
+export const checkAttr = (el: Element, name: string): string | null => {
+  const val = el.getAttribute(name)
+  if (val != null) el.removeAttribute(name)
+  return val
+}
+export const listen = (el: Element, event: string, handler: any, options?: any) => {
+  el.addEventListener(event, handler, options)
+}
+```
+
+## Queries
+
+```ts twoslash
+// @module: esnext
+// @filename: maths.ts
+export function absolute(num: number) {
+  if (num < 0) return num * -1
+  return num
+}
+// @filename: index.ts
+import { absolute } from "./maths"
+const value = absolute(-1)
+//    ^?
+```
+
+## Completions
+
+```ts twoslash
+// @noErrors
+console.d
+//       ^|
+// woo
+```
+
+## Errors
+
+```ts twoslash
+// @errors: 2339
+const welcome = "Tudo bem gente?"
+const words = welcome.contains(" ")
+```
+
+## Line Highlighting
+
+```ts twoslash {2, 6-7}
+// @include: main
+class Point {
+  x: number
+  y: number
+  // Normal signature with defaults
+  constructor(x = 0, y = PI) {
+    this.x = x
+    this.y = y
+  }
+}
+```
